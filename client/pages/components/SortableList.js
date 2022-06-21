@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Draggable } from "react-smooth-dnd";
-import arrayMove, {arrayMoveImmutable} from "array-move";
+import {arrayMoveImmutable} from "array-move";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
