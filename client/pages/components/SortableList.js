@@ -3,10 +3,7 @@ import { Container, Draggable } from "react-smooth-dnd";
 import {arrayMoveImmutable} from "array-move";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import DragHandleIcon from "@material-ui/icons/DragHandle";
 import styled from 'styled-components';
 
 const SortableList = (props) => {
@@ -18,6 +15,7 @@ const SortableList = (props) => {
     };
 
     return (
+        <Wrapper>
         <List>
             <Container dragHandleSelector=".drag-handle" lockAxis="y" onDrop={onDrop}>
                 {items.map(({ id, text }) => (
@@ -25,12 +23,8 @@ const SortableList = (props) => {
                         <ItemWrapper>
                             <ItemInside>
                             <ListItem className="drag-handle">
-                                <ListItemText primary={text} />
-                                <ListItemSecondaryAction>
-                                    <ListItemIcon >
-                                        <DragHandleIcon />
-                                    </ListItemIcon>
-                                </ListItemSecondaryAction>
+                                <ListItemText classes={{root: 'item-text-root'}} primary={text} />
+
 
 
                         </ListItem>
@@ -40,9 +34,17 @@ const SortableList = (props) => {
                 ))}
             </Container>
         </List>
+        </Wrapper>
     );
 };
 
+const Wrapper = styled.div`
+  width: 80%;
+  margin:auto;
+  .item-text-root{
+    text-align: right;
+  }
+`;
 const ItemInside = styled.div`
   width:50%;
   margin:auto;
@@ -50,6 +52,13 @@ const ItemInside = styled.div`
 const ItemWrapper = styled.div`
     display:flex;
     flex-direction: row;
+  cursor: pointer;
+  border: 1px solid;
+  margin: 10px 10px;
+  border-radius: 5px;
+  .drag-handle{
+    text-align: right;
+  }
    
 `;
 export default SortableList;
