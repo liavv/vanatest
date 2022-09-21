@@ -23,5 +23,9 @@
   "devDependencies": {
     "mongodb": "^4.8.1",
     "uuid": "^8.3.2"
+  },
+  "engines" : {
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
   }
 }
