@@ -4,6 +4,7 @@ const dev = process.NODE_ENV !== 'production';
 const app = require('next')({dev, dir: './client'})
 const views = require('./client/views/views');
 const routes = require("./api/v1/routes");
+const port = process.env.PORT || 3000;
 app.prepare().then(()=>{
     const server = express();
     server.use(bodyParser.urlencoded({extended:false}));
@@ -16,7 +17,7 @@ app.prepare().then(()=>{
         return next();
     });
 
-    server.listen(3000,err=>{
+    server.listen(port,err=>{
         if (err) throw err;
         console.log('listen on port 3000');
     })
